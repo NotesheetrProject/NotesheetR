@@ -1,0 +1,40 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>NoteSheetR</h1>
+    <p class="lead">The NoteSheetR is a tool to convert the notes of a Piano Tutorial into a sheet of paper with written notes.</p>
+    <p><article>Paste the URL here:</article><input id="urlField" type="text" class="urlField"></p>
+    <p><a onclick="convert()" class="btn btn-primary btn-lg">Convert to notes &raquo;</a></p>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Getting started</h2>
+        <p>
+            The link down below gives you a working video - insert the URL in the textfield to try it.
+        </p>
+        <p><a class="btn btn-default" href="https://www.youtube.com/c/PHianonize/playlists">Some sample videos &raquo;</a></p>
+    </div>
+</div>
+
+<script>
+    function convert() {
+        debugger;
+        var urlField = document.getElementById("urlField");
+        var url = urlField.value;
+
+        var request = $.ajax({
+            type: "POST",
+            url: "/Home/ConvertVideoByUrl",
+            data: { uri: url },
+            success: function () {
+                debugger;
+            }
+        });
+
+
+        console.log(request);
+    }
+</script>
